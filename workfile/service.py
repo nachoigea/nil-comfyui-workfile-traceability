@@ -244,6 +244,8 @@ def _process_outputs(record: HistoryRecord, outputs: list[OutputFile], options: 
             for _, _, result in members:
                 result["status"] = write.status
                 result["files"] = write.files
+            if write.status == "written":
+                _log_written_folder(folder, [p for _, p, _ in members], write.files)
         except Exception as exc:  # una carpeta con problemas no debe impedir las demás
             for output, _, result in members:
                 result["status"] = "error"
@@ -256,6 +258,17 @@ def _process_outputs(record: HistoryRecord, outputs: list[OutputFile], options: 
     written = sum(1 for r in report.results if r.get("status") == "written")
     logger.info("[Workfile] prompt %s: %d carpeta(s) _workfile creada(s).", record.prompt_id, written)
     return report
+
+
+def _log_written_folder(folder: Path, output_paths: list[Path], json_files: list[str]) -> None:
+    """
+    Muestra en la consola de ComfyUI dónde ha quedado cada archivo: la(s)
+    salida(s) generada(s) y cada JSON de su carpeta _workfile.
+    """
+    lines = ["[Workfile] Generación terminada."]
+    lines += [f"  Imagen guardada en: {path}" for path in output_paths]
+    lines += [f"  {name} guardado en: {folder / name}" for name in json_files]
+    logger.info("\n".join(lines))
 
 
 def _manifest_relative_paths(folder: Path) -> set[str]:
