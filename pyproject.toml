@@ -9,7 +9,7 @@ requires-python = ">=3.10"
 dependencies = []
 
 [project.urls]
-Repository = "https://github.com/<tu-usuario>/NIL_ComfyUI-Workfile_traceability"
+Repository = "https://github.com/nachoigea/nil-comfyui-workfile-traceability"
 
 [tool.comfy]
 PublisherId = ""        # rellenar solo si se publica en el Comfy Registry
