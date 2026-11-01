@@ -1,0 +1,17 @@
+[project]
+name = "nil-comfyui-workfile-traceability"
+description = "Guarda prompt.json, workflow.json y un manifiesto de reproducibilidad en una carpeta <nombre>_workfile junto a cada salida de ComfyUI."
+version = "0.1.0"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+# Sin dependencias adicionales: usa solo la biblioteca estándar y lo que ya
+# trae ComfyUI (aiohttp).
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/<tu-usuario>/NIL_ComfyUI-Workfile_traceability"
+
+[tool.comfy]
+PublisherId = ""        # rellenar solo si se publica en el Comfy Registry
+DisplayName = "NIL ComfyUI Workfile Traceability"
+Icon = ""

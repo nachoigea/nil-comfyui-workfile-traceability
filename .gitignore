@@ -1,0 +1,7 @@
+# Generado por Python/ComfyUI al cargar la extensión
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Configuración local del IDE (PyCharm)
+.idea/
